@@ -10,7 +10,7 @@
 - Visual: `evidence/preview-live-20261107.png`
 
 ## Remaining before submit
-1. Public GitHub repo (sanitized) — in progress / pushed by October
+1. Public GitHub repo: https://github.com/TheNeuralWars/goalworld-ops-switch (pushed 2026-11-07)
 2. Short demo video (Switch room + approval gate + scout probe)
 3. Human submit at https://www.wemakedevs.org/hackathons/switch/submit (rules bar bots)
 

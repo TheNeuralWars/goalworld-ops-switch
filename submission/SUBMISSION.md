@@ -1,4 +1,4 @@
-# Flip the Switch — submission draft (DO NOT SUBMIT until October REVIEW: approved)
+# Flip the Switch — submission draft (October REVIEW: approved — human form submit still required)
 
 **Project name:** GoalWorld Ops Room  
 **Track:** 01 — Best Business Workflow  
@@ -19,7 +19,8 @@ A Switch-native GoalWorld operations room where scout, gatekeeper, and scribe ag
 Without Switch there is no shared room identity, agent addressing, or chat bridge. The workflow cannot run on agents alone.
 
 ## Repo / demo (fill at submit time)
-- Repo: _(create public fork/repo after October approve — currently local `/workspace/flip-the-switch/goalworld-ops-switch`)_
+- Repo: https://github.com/TheNeuralWars/goalworld-ops-switch
+- Repo (was): _(create public fork/repo after October approve — currently local `/workspace/flip-the-switch/goalworld-ops-switch`)_
 - Demo video: _(record after REVIEW: approved)_
 - Preview (local): http://127.0.0.1:18765/
 - Switch API (local): http://127.0.0.1:18000/health
