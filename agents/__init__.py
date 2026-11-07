@@ -1,0 +1,1 @@
+"""GoalWorld Switch agents."""

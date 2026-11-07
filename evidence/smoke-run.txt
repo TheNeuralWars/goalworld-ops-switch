@@ -1,0 +1,125 @@
+/workspace/flip-the-switch/goalworld-ops-switch/.venv/lib/python3.13/site-packages/pytest_asyncio/plugin.py:300: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the "fixture" caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+........                                                                 [100%]
+8 passed in 0.09s
+
+>>> check site status for goalworld.fun
+@gw-gatekeeper: `site_status` is auto-safe. @gw-ops-scout can run it. (safe auto ('goalworld.fun'))
+@gw-ops-scout **site_status** (auto, read-only)
+```json
+{
+  "checked_at": "2026-11-06T16:08:19.200413+00:00",
+  "results": [
+    {
+      "url": "https://goalworld.fun/",
+      "status": 200,
+      "ok": true,
+      "snippet": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-w"
+    },
+    {
+      "url": "https://goalworld.fun/book.html",
+      "status": 200,
+      "ok": true,
+      "snippet": "<!doctype html>\n<html
+@gw-scribe: brief saved → evidence/last_brief.md
+@gw-ops-scout **site_status** (auto, read-only)
+```json
+{
+  "checked_at": "2026-11-06T16:08:19.200413+00:00",
+  "results": [
+    {
+      "url": "https://goalworld.fun/",
+      "status": 200,
+      "ok": true,
+      "snippet": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-w"
+    },
+    {
+      "url": "https://goalworld.fun/book.html",
+      "status": 200,
+      "ok
+
+>>> what is the Flip the Switch deadline?
+@gw-gatekeeper: `contest_deadline_info` is auto-safe. @gw-ops-scout can run it. (safe auto ('deadline'))
+@gw-ops-scout **contest_deadline_info** (auto, read-only)
+```json
+{
+  "event": "Flip the Switch",
+  "deadline_ist": "2026-11-07 23:59 IST",
+  "deadline_rome": "2026-11-07 19:29 Europe/Rome",
+  "track": "01 Best Business Workflow",
+  "official": "https://www.wemakedevs.org/hackathons/switch",
+  "note": "Track03 hackathon issues were all assigned as of prep; focus Track01."
+}
+```
+@gw-scribe: brief saved → evidence/last_brief.md
+@gw-ops-scout **contest_deadline_info** (auto, read-only)
+```json
+{
+  "event": "Flip the Switch",
+  "deadline_ist": "2026-11-07 23:59 IST",
+  "deadline_rome": "2026-11-07 19:29 Europe/Rome",
+  "track": "01 Best Business Workflow",
+  "official": "https://www.wemakedevs.org/hackathons/switch",
+  "note": "Track03 hackathon issues were all assigned as of prep; focus Track01."
+}
+```
+
+>>> docker stack status please
+@gw-gatekeeper: `stack_status` is auto-safe. @gw-ops-scout can run it. (safe auto ('docker'))
+@gw-ops-scout **stack_status** (auto, read-only)
+```json
+{
+  "ok": true,
+  "containers": [
+    "gw-switch-gateway-1\tUp 6 minutes",
+    "gw-switch-switch-1\tUp 6 minutes",
+    "gw-switch-mattermost-1\tUp 6 minutes (healthy)",
+    "gw-switch-postgres-1\tUp 6 minutes (healthy)"
+  ]
+}
+```
+@gw-scribe: brief saved → evidence/last_brief.md
+@gw-ops-scout **stack_status** (auto, read-only)
+```json
+{
+  "ok": true,
+  "containers": [
+    "gw-switch-gateway-1\tUp 6 minutes",
+    "gw-switch-switch-1\tUp 6 minutes",
+    "gw-switch-mattermost-1\tUp 6 minutes (healthy)",
+    "gw-switch-postgres-1\tUp 6 minutes (healthy)"
+  ]
+}
+```
+
+>>> draft submission text for the hackathon
+@gw-gatekeeper:
+**APPROVAL REQUIRED** `1d4935`
+- intent: `draft_submission`
+- risk: low
+- summary: draft submission text for the hackathon
+- proposed (dry-run only): DRY-RUN only for: draft_submission
+Reply: `approve 1d4935` or `reject 1d4935`
+
+>>> deploy production to caddy now
+@gw-gatekeeper: **DENIED** `deploy_production` — denied by policy keyword 'deploy production'. GoalWorld hard limits: no spend / no public submit / no deletes.
+@gw-scribe: brief saved → evidence/last_brief.md
+@gw-gatekeeper: **DENIED** `deploy_production` — denied by policy keyword 'deploy production'. GoalWorld hard limits: no spend / no public submit / no deletes.
+
+>>> submit to hackathon final submit
+@gw-gatekeeper: **DENIED** `contest_submit` — denied by policy keyword 'submit to hackathon'. GoalWorld hard limits: no spend / no public submit / no deletes.
+@gw-scribe: brief saved → evidence/last_brief.md
+@gw-gatekeeper: **DENIED** `contest_submit` — denied by policy keyword 'submit to hackathon'. GoalWorld hard limits: no spend / no public submit / no deletes.
+
+>>> approve 1d4935
+@gw-gatekeeper: **approved** `1d4935` (draft_submission). Dry-run receipt only — no live external side effect executed.
+transcript: /workspace/flip-the-switch/goalworld-ops-switch/evidence/transcript.jsonl
+switch health: {'status': 'ok'}
+registered gw-ops-scout id=83ebb21b-8758-4468-8d0f-bcb50ea295f4 key=5OAd…IBgI
+registered gw-gatekeeper id=69fa5bcc-6375-4d35-998b-5ec843504a73 key=TShO…6ETE
+registered gw-scribe id=28ab6021-37a8-4b93-b8b9-aab7678317a1 key=-Qct…TQk0
+room_id= a87ac113-2954-4097-9cc9-212026ff95c5
+LIVE_OK room_id= a87ac113-2954-4097-9cc9-212026ff95c5
+SMOKE written to /workspace/flip-the-switch/goalworld-ops-switch/evidence/SMOKE.md

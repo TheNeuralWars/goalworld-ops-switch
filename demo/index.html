@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GoalWorld Ops Room — Flip the Switch (Track 01)</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-block">
+      <div class="eyebrow">
+        <span class="tag">FLIP THE SWITCH · TRACK 01</span>
+        <span class="tag-sep">·</span>
+        <span class="tag-sub">FRACTURED CODE / GOALWORLD OPS</span>
+      </div>
+      <h1>GoalWorld Ops Room</h1>
+      <p class="sub">
+        Human-in-the-loop operations console ·
+        <strong class="txt-live">LIVE Switch Room</strong> (WebSocket agent bus) &amp;
+        <strong class="txt-sandbox">SANDBOX</strong> (local policy dry-run)
+      </p>
+    </div>
+    <div id="meta" class="meta-chips" aria-label="System telemetry">
+      <span class="pill">initializing telemetry…</span>
+    </div>
+  </header>
+
+  <section class="dag-strip" aria-label="Switch Protocol DAG">
+    <div class="dag-title">SWITCH WS DAG (ANTI-STORM)</div>
+    <div class="dag-steps">
+      <span class="dag-node human">Human Task</span>
+      <span class="dag-edge"><code>[human]</code> →</span>
+      <span class="dag-node gate">gw-gatekeeper <small>Policy / Approval Gate</small></span>
+      <span class="dag-edge"><code>[handoff:probe]</code> →</span>
+      <span class="dag-node scout">gw-ops-scout <small>Read-Only Probe</small></span>
+      <span class="dag-edge"><code>[brief]</code> →</span>
+      <span class="dag-node scribe">gw-scribe <small>Terminal Ops Brief</small></span>
+    </div>
+    <div class="dag-honesty">
+      Deterministic Python handlers · <code>POST /agents</code> protocol · No LLM · Zero external side effects
+    </div>
+  </section>
+
+  <main class="workspace">
+    <!-- Left Column: Room Transcript + Scribe Brief -->
+    <div class="col-left">
+      <section class="panel panel-transcript">
+        <div class="panel-head">
+          <div>
+            <h2>Room &amp; Sandbox Transcript</h2>
+            <p class="muted">
+              LIVE Switch events carry <span class="badge-inline live">LIVE · SWITCH</span>.
+              Local simulator events carry <span class="badge-inline sandbox">SANDBOX · LOCAL</span>.
+            </p>
+          </div>
+          <div class="filter-bar" role="group" aria-label="Filter transcript lane">
+            <button type="button" class="filter-btn active" data-filter="all">All <span id="cntAll" class="cnt">0</span></button>
+            <button type="button" class="filter-btn" data-filter="live">LIVE Switch <span id="cntLive" class="cnt">0</span></button>
+            <button type="button" class="filter-btn" data-filter="sandbox">SANDBOX <span id="cntSandbox" class="cnt">0</span></button>
+          </div>
+        </div>
+        <div id="transcript" class="transcript-feed"></div>
+      </section>
+
+      <section class="panel panel-brief">
+        <div class="panel-head">
+          <div>
+            <h2>Latest Scribe Ops Brief</h2>
+            <p class="muted">Persisted by <code>gw-scribe</code> at <code>evidence/last_brief.md</code> at the end of each DAG turn.</p>
+          </div>
+          <span class="pill purple">gw-scribe · terminal sink</span>
+        </div>
+        <pre id="lastBrief" class="brief-box">Loading latest ops brief…</pre>
+      </section>
+    </div>
+
+    <!-- Right Column: LIVE Switch Controls + SANDBOX Controls -->
+    <div class="col-right">
+      <section class="panel panel-live">
+        <div class="lane-header">
+          <span class="lane-badge live">PRIMARY · LIVE SWITCH ROOM</span>
+          <span class="lane-proto">POST /agents · WebSocket · :18766 → :18000</span>
+        </div>
+        <h2>LIVE — Human → Switch Room → WS Agents</h2>
+        <p class="banner-live">
+          Typed tasks enter the live Switch room via official <code>send_targeted_message([human])</code>.
+          Connected WebSocket agents enforce GoalWorld policy, run read-only HTTP/Docker/file probes, and persist an ops brief.
+          <strong>Deterministic handlers — no paid LLM, zero external side effects.</strong>
+        </p>
+
+        <div id="liveStatus" class="status-box">Checking live bridge…</div>
+
+        <label class="lbl" for="liveText">Dispatch task into LIVE Switch room</label>
+        <div class="row">
+          <input id="liveText" type="text" placeholder="check site status for goalworld.fun" autocomplete="off" />
+          <button id="liveSend" type="button" class="btn-primary-live">Send to LIVE Room</button>
+        </div>
+
+        <div class="lbl-sub">Preset operational tasks (click to send to Switch room):</div>
+        <div class="chips">
+          <button type="button" class="chip-auto" data-live="check site status for goalworld.fun">✓ site status (auto)</button>
+          <button type="button" class="chip-auto" data-live="docker switch stack status">✓ stack status (auto)</button>
+          <button type="button" class="chip-auto" data-live="what is the Flip the Switch deadline?">✓ contest deadline (auto)</button>
+          <button type="button" class="chip-auto" data-live="summarize fractured code canon">✓ canon summary (auto)</button>
+          <button type="button" class="chip-gate" data-live="draft submission text for the hackathon">⧗ draft submission (approval gate)</button>
+          <button type="button" class="chip-deny" data-live="deploy production to caddy now">✕ deploy prod (hard deny)</button>
+          <button type="button" class="chip-deny" data-live="submit to hackathon final submit">✕ final submit (hard deny)</button>
+        </div>
+
+        <div class="subpanel">
+          <h3>LIVE Pending Approval Cards</h3>
+          <div id="liveApprovals"></div>
+          <p id="liveLog" class="log" aria-live="polite"></p>
+        </div>
+
+        <div class="proto-note">
+          <div class="proto-note-title">Protocol &amp; Mattermost Bridge Honesty</div>
+          <ul>
+            <li><strong>Custom Protocol Agents:</strong> Registered via <code>POST /agents</code> (never Console-only <code>register-known</code>).</li>
+            <li><strong>Mattermost Loopback (<code>127.0.0.1:18065</code>):</strong> Room is auto-bridged to Mattermost. Because bootstrap <code>POST /agents</code> tokens get HTTP <code>403</code> on <code>update_agent_detail(addressing)</code>, non-owner Mattermost user posts arrive with <code>addressed=false</code>; <code>gw-gatekeeper</code> listens with <code>filter=all</code> and accepts <code>@gw-gatekeeper</code> / <code>[human]</code> from non-agent human senders while keeping Preview LIVE as the zero-secret primary entrypoint.</li>
+            <li><strong>Console Eligibility:</strong> Official FAQ lists Switch Console + Docker + coding agent. Protocol docs support custom agents; <strong>no contest rule waiver is claimed</strong>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="panel panel-sandbox">
+        <div class="lane-header">
+          <span class="lane-badge sandbox">SECONDARY · LOCAL SANDBOX</span>
+          <span class="lane-proto">In-process dry-run · Does NOT enter Switch</span>
+        </div>
+        <h2>SANDBOX — Local Policy Simulator Only</h2>
+        <p class="banner">
+          Isolated local dry-run lane inside <code>demo/server.py</code>. Does <em>not</em> connect to or post in the Switch room.
+          Approving or rejecting cards here never mutates the LIVE room queue.
+        </p>
+
+        <label class="lbl" for="simText">Simulate policy classification (sandbox)</label>
+        <div class="row">
+          <input id="simText" type="text" placeholder="draft submission text for the hackathon" autocomplete="off" />
+          <button id="simBtn" type="button" class="btn-sandbox">Run Sandbox Policy</button>
+        </div>
+        <div class="chips">
+          <button type="button" class="chip-sandbox" data-sim="check site status for goalworld.fun">sandbox: site status</button>
+          <button type="button" class="chip-sandbox" data-sim="draft submission text for the hackathon">sandbox: draft (approval)</button>
+          <button type="button" class="chip-sandbox" data-sim="deploy production to caddy now">sandbox: deploy (deny)</button>
+        </div>
+
+        <div class="subpanel">
+          <h3>Sandbox Pending Approvals</h3>
+          <div id="approvals"></div>
+          <p id="actionLog" class="log" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="panel panel-links">
+        <h2>References &amp; Verification</h2>
+        <div class="links-grid">
+          <a href="https://www.wemakedevs.org/hackathons/switch" target="_blank" rel="noreferrer">Flip the Switch Hackathon ↗</a>
+          <a href="https://docs.switchagents.ai/switch-rooms/internals/agent-protocol.md" target="_blank" rel="noreferrer">Switch Agent Protocol Docs ↗</a>
+          <a href="https://goalworld.fun/" target="_blank" rel="noreferrer">GoalWorld Live Site ↗</a>
+          <a href="/api/health" target="_blank" rel="noreferrer">Preview /api/health JSON ↗</a>
+          <a href="/api/live/status" target="_blank" rel="noreferrer">Bridge /api/live/status JSON ↗</a>
+          <a href="/api/transcript" target="_blank" rel="noreferrer">Raw /api/transcript JSON ↗</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div>Dual-bind local preview: <code>http://127.0.0.1:18765/</code> &amp; <code>http://localhost:18765/</code> (<code>::1</code>).</div>
+    <div>Gate status: <strong>REVIEW: pending / changes_requested</strong> · External side effects: <strong>DRY-RUN ONLY</strong></div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+# GoalWorld Ops policy — default deny for external side effects.
+version: 1
+default: deny
+
+allow_auto:
+  - intent: health_check
+  - intent: site_status
+  - intent: stack_status
+  - intent: list_approvals
+  - intent: read_status
+  - intent: summarize_canon
+  - intent: contest_deadline_info
+
+require_approval:
+  - intent: draft_submission
+  - intent: propose_deploy
+  - intent: draft_external_message
+  - intent: draft_social_post
+  - intent: spend_request
+
+deny:
+  - intent: send_email
+  - intent: post_social
+  - intent: deploy_production
+  - intent: contest_submit
+  - intent: delete_anything
+  - intent: spend_money
+  - intent: vps_mutate
+
+keywords:
+  health_check: ["health", "uptime", "ping site", "is the site up"]
+  site_status: ["goalworld.fun", "site status", "check site"]
+  stack_status: ["docker", "switch stack", "containers"]
+  list_approvals: ["approvals", "pending approval", "open gates"]
+  read_status: ["status.md", "project status", "review pending"]
+  summarize_canon: ["canon", "fractured code", "memory bootstrap"]
+  contest_deadline_info: ["deadline", "flip the switch", "when does it close"]
+  draft_submission: ["draft submission", "submission text", "prepare submit"]
+  propose_deploy: ["deploy", "ship to prod", "caddy"]
+  draft_external_message: ["email draft", "slack draft", "message draft"]
+  draft_social_post: ["tweet", "post to x", "social post"]
+  spend_request: ["buy", "purchase", "pay", "upgrade plan"]
+  send_email: ["send email", "mail nico"]
+  post_social: ["publish to x", "post now"]
+  deploy_production: ["deploy production", "push live"]
+  contest_submit: ["submit to hackathon", "final submit"]
+  delete_anything: ["delete file", "delete the", "rm -rf", "destroy volume", "destroy database"]
+  spend_money: ["charge card", "spend $"]
+  vps_mutate: ["restart vps", "kill process on vps"]

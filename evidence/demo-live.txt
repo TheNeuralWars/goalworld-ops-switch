@@ -1,0 +1,6 @@
+switch health: {'status': 'ok'}
+registered gw-ops-scout id=83ebb21b-8758-4468-8d0f-bcb50ea295f4 key=5OAd…IBgI
+registered gw-gatekeeper id=69fa5bcc-6375-4d35-998b-5ec843504a73 key=TShO…6ETE
+registered gw-scribe id=28ab6021-37a8-4b93-b8b9-aab7678317a1 key=-Qct…TQk0
+room_id= a87ac113-2954-4097-9cc9-212026ff95c5
+LIVE_OK room_id= a87ac113-2954-4097-9cc9-212026ff95c5
